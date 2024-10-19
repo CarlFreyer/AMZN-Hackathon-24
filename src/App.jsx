@@ -17,6 +17,8 @@ import { getUrl } from "aws-amplify/storage";
 import { uploadData } from "aws-amplify/storage";
 import { generateClient } from "aws-amplify/data";
 import outputs from "../amplify_outputs.json";
+import { MapView } from '@aws-amplify/ui-react-geo';
+
 /**
  * @type {import('aws-amplify/data').Client<import('../amplify/data/resource').Schema>}
  */
@@ -89,6 +91,8 @@ export default function App() {
   }
 
   return (
+    <div>
+    <MapView />
     <Authenticator>
       {({ signOut }) => (
         <Flex
@@ -181,5 +185,6 @@ export default function App() {
         </Flex>
       )}
     </Authenticator>
+    </div>
   );
 }
