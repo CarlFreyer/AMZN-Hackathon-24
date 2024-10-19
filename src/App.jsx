@@ -18,7 +18,6 @@ import { uploadData } from "aws-amplify/storage";
 import { generateClient } from "aws-amplify/data";
 import outputs from "../amplify_outputs.json";
 import { MapView } from '@aws-amplify/ui-react-geo';
-import { Source } from 'react-map-gl';
 
 /**
  * @type {import('aws-amplify/data').Client<import('../amplify/data/resource').Schema>}
@@ -29,71 +28,71 @@ const client = generateClient({
   authMode: "userPool",
 });
 
-function filterFeaturesByDay(featureCollection, time) {
-  const date = new Date(time);
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  const day = date.getDate();
-  const features = featureCollection.features.filter(feature => {
-    const featureDate = new Date(feature.properties.time);
-    return (
-      featureDate.getFullYear() === year &&
-      featureDate.getMonth() === month &&
-      featureDate.getDate() === day
-    );
-  });
-  return {type: 'FeatureCollection', features};
-}
-
-export default function App() {const [allDays, useAllDays] = useState(true);
-  const [timeRange, setTimeRange] = useState([0, 0]);
-  const [selectedTime, selectTime] = useState(0);
-  const [earthquakes, setEarthQuakes] = useState(null);
+export default function App() {
+  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    /* global fetch */
-    fetch('https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson')
-      .then(resp => resp.json())
-      .then(json => {
-        // Note: In a real application you would do a validation of JSON data before doing anything with it,
-        // but for demonstration purposes we ingore this part here and just trying to select needed data...
-        const features = json.features;
-        const endTime = features[0].properties.time;
-        const startTime = features[features.length - 1].properties.time;
-
-        setTimeRange([startTime, endTime]);
-        setEarthQuakes(json);
-        selectTime(endTime);
-      })
-      .catch(err => console.error('Could not load data', err)); // eslint-disable-line
+    fetchNotes();
   }, []);
 
-  const data = useMemo(() => {
-    return allDays ? earthquakes : filterFeaturesByDay(earthquakes, selectedTime);
-  }, [earthquakes, allDays, selectedTime]);
+  async function fetchNotes() {
+    const { data: notes } = await client.models.Note.list();
+    await Promise.all(
+      notes.map(async (note) => {
+        if (note.image) {
+          const linkToStorageFile = await getUrl({
+            path: ({ identityId }) => `media/${identityId}/${note.image}`,
+          });
+          console.log(linkToStorageFile.url);
+          note.image = linkToStorageFile.url;
+        }
+        return note;
+      })
+    );
+    console.log(notes);
+    setNotes(notes);
+  }
 
-  /*
-    <Authenticator>
-      {({ signOut }) => (
-          <Button onClick={signOut}>Sign Out</Button>
-      )}
-    </Authenticator>
-  */
+  async function createNote(event) {
+    event.preventDefault();
+    const form = new FormData(event.target);
+    console.log(form.get("image").name);
+
+    const { data: newNote } = await client.models.Note.create({
+      name: form.get("name"),
+      description: form.get("description"),
+      image: form.get("image").name,
+    });
+
+    console.log(newNote);
+    if (newNote.image)
+      if (newNote.image)
+        await uploadData({
+          path: ({ identityId }) => `media/${identityId}/${newNote.image}`,
+
+          data: form.get("image"),
+        }).result;
+
+    fetchNotes();
+    event.target.reset();
+  }
+
+  async function deleteNote({ id }) {
+    const toBeDeletedNote = {
+      id: id,
+    };
+
+    const { data: deletedNote } = await client.models.Note.delete(
+      toBeDeletedNote
+    );
+    console.log(deletedNote);
+
+    fetchNotes();
+  }
+
   return (
     <div>
-      <p>Test</p>
-      <MapView initialViewState={{
-            latitude: 40,
-            longitude: -100,
-            zoom: 3
-          }}
-          mapStyle="mapbox://styles/mapbox/dark-v9">
-            {data && (
-            <Source type="geojson" data={data}>
-              <Layer {...heatmapLayer} />
-            </Source>
-          )}
-      </MapView>
+    <MapView />
     </div>
   );
 }

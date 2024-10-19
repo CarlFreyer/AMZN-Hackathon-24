@@ -13,11 +13,12 @@ const backend = defineBackend({
   // additional resources
 });
 
+let random = (Math.random() + 1).toString(36).substring(7);
 const geoStack = backend.createStack("geo-stack");
 
 // create a location services map
 const map = new CfnMap(geoStack, "Map", {
-  mapName: "hawkHuddles",
+  mapName: random,
   description: "Map",
   configuration: {
     style: "VectorEsriNavigation",
@@ -26,18 +27,18 @@ const map = new CfnMap(geoStack, "Map", {
   tags: [
     {
       key: "name",
-      value: "hawkHuddles",
+      value: random
     },
     {
       key: "logicalId",
-      value: "hawkHuddles"
+      value: random
     }
   ],
 });
 
 // create an IAM policy to allow interacting with geo resource
 const myGeoPolicy = new Policy(geoStack, "GeoPolicy", {
-  policyName: "myGeoPolicy",
+  policyName: random + "Policy",
   statements: [
     new PolicyStatement({
       actions: [
