@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amznhackathon24-dev-6c016-authRole",
+      "UnauthRoleArn": "arn:aws:iam::779905866554:role/amplify-amznhackathon24-dev-6c016-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::779905866554:role/amplify-amznhackathon24-dev-6c016-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-amznhackathon24-dev-6c016-deployment",
+      "UnauthRoleName": "amplify-amznhackathon24-dev-6c016-unauthRole",
+      "StackName": "amplify-amznhackathon24-dev-6c016",
+      "StackId": "arn:aws:cloudformation:us-east-1:779905866554:stack/amplify-amznhackathon24-dev-6c016/8a08e0e0-8e45-11ef-8e52-0e667f8e3763",
+      "AmplifyAppId": "d3o3yjx84kzlcl"
+    },
+    "categories": {
+      "auth": {
+        "amznhackathon24342cb6da": {}
+      },
+      "geo": {
+        "map1065d748": {}
+      }
+    }
+  }
+}
