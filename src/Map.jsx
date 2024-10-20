@@ -17,11 +17,11 @@ function filterByFloor(shapes, zoom, floor, studiers) {
   })
   features.forEach(feature => {
     if(zoom <= 17){
-      feature.properties.studiers = studiers[feature.properties.type][feature.properties.name]['cout']
+      feature.properties.studiers = studiers[feature.properties.type][feature.properties.name]['count']
     }else if(zoom > 17 && feature.properties.type == "Building"){
       feature.properties.studiers = -1
     }else{
-      feature.properties.studiers = studiers[feature.properties.type][feature.properties.name]['cout']
+      feature.properties.studiers = studiers[feature.properties.type][feature.properties.name]['count']
     }
     feature.properties.courses = studiers[feature.properties.type][feature.properties.name]['courses'].toString()
   });
@@ -33,7 +33,7 @@ export default function Map() {
     const shapes = mapShapes;
     const [zoom, setZoom] = useState(16);
     const [studiers, setStudiers] = useState(studiersConfig);
-    const [popUp, setPopup] = useState({show: false, lng: 0, lat:0, data: ("<></>")});
+    const [popUp, setPopup] = useState({active: false, show: false, lng: 0, lat:0, type: 0, data: ("<></>")});
 
   const data = useMemo(() => {
     return filterByFloor(shapes, zoom, floor, studiers);
@@ -48,6 +48,7 @@ export default function Map() {
       )}
     </Authenticator>
   */
+ console.log(popUp)
   return (
     <div>
       <div className="map">
@@ -57,24 +58,32 @@ export default function Map() {
             latitude: 40.609000828213624,
             zoom: 17
           }}
+          style={popUp.type == 1 && popUp.active == true ? {cursor: "crosshair"} : {cursor: "default"}}
           className="mapElement"
           interactiveLayerIds={['data', 'lines']}
           onMove={event => {setZoom(event.viewState.zoom)}}
           onClick={(event) => {
-            if(event.features.length == 0){
-              setPopup({show: false, lng: 0, lat:0, data: ("<></>")})
-            }else{
-              const coordinates = event.features[0].geometry.coordinates.slice();
-              const name = event.features[0].properties.type == "Room" ? event.features[0].properties.name  + " " + event.features[0].properties.building : event.features[0].properties.name;
-              const courses = event.features[0].properties.courses;
-              const count = event.features[0].properties.studiers;
-
-              while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360;
+            if(popUp.active){
+              console.log(event.features)
+              if(event.features.length == 0){
+                setPopup({active: false, show: false, lng: 0, lat:0, type:0, data:{type: "", name: ""}})
+              }else{
+                const name = event.features[0].properties.type == "Room" ? event.features[0].properties.name  + " " + event.features[0].properties.building : event.features[0].properties.name;
+                const type = event.features[0].properties.type == "Building" ? "Floor" : this;
+                const count = event.features[0].properties.studiers;
+                console.log(name)
+                setPopup({active: true, show: true, lng: event.lngLat.lng, lat:event.lngLat.lat, type: 1, data: {type: type, name: name, studiers: count}})
               }
-              setPopup({show: true, lng: event.lngLat.lng, lat: event.lngLat.lat, data: {courses: courses, studiers: count, name: name} })
+            }else{
+              if(event.features.length == 0){
+                setPopup({active: false, show: false, lng: 0, lat:0, type:0, data: ("<></>")})
+              }else{
+                const name = event.features[0].properties.type == "Room" ? event.features[0].properties.name  + " " + event.features[0].properties.building : event.features[0].properties.name;
+                const courses = event.features[0].properties.courses;
+                const count = event.features[0].properties.studiers;
+                setPopup({active: false, show: true, lng: event.lngLat.lng, lat: event.lngLat.lat, type: 0, data: {courses: courses, studiers: count, name: name} })
+              }
             }
-            
           }}
           >
               {data && (
@@ -89,22 +98,44 @@ export default function Map() {
               floorLevel={floor}
               minFloor={3}
               maxFloor={7}
+              edit={popUp}
+              onEdit={setPopup}
               onChangeFloor={setFloor}
               zoom={zoom}
             />
-        {popUp.show && (
+        {popUp.show && popUp.type == 0 &&(
           <div className="bottomPopups">
-            <div class="box">
-              <div><h1 class="label">Room/Building Name</h1><h1 class="value">{popUp.data.name}</h1></div>
-              <div><h3 class="label">Percent of Studiers (Compared to rest of campus)</h3><h3 class="value">{popUp.data.studiers * 10}%</h3></div>
+            <div className="box">
+              <div><p className="label">Room/Building Name</p><h1 className="value">{popUp.data.name}</h1></div>
+              <div><p className="label">Percent of Studiers (Compared to rest of campus)</p><h3 class="value">{popUp.data.studiers * 10}%</h3></div>
             </div>
             {popUp.data.courses.length != 0 && (
-            <div class="box">
-              <h2 class="label">Courses being studied</h2>
-              <div class="courseList">
+            <div className="box">
+              <p className="label">Courses being studied</p>
+              <div className="courseList">
                 {popUp.data.courses.split(',').map(course => (<h3>{course}</h3>))}
               </div>
             </div>)}
+          </div>)}
+        {popUp.show && popUp.type == 1 &&(
+          <div className="bottomPopups">
+            <div className="box">
+              <div><p className="label">Room/Building Name</p><h1 className="value">{popUp.data.name}</h1></div>
+              <div><p className="label">Percent of Studiers (Compared to rest of campus)</p><h3 className="value">{popUp.data.studiers * 10}%</h3></div>
+            </div>
+            <div className="box">
+              <p>{popUp.data.type}</p>
+              <p className="label">Add Study Location</p>
+              <div className="courseList">
+                <div className="select-field">
+                  <label htmlFor={buildings} className="label">{"What course are you studying for?"}</label>
+                  <select key={"courses"} label={"courses"} id={"courses"} className="select">
+                    {studiers.Courses && studiers.Courses.map(course => (<option value={course}>{course}</option>))}
+                  </select>
+                </div>
+                <button className="filter-button">Add</button>
+              </div>
+            </div>
           </div>)}
       </div>
     </div>

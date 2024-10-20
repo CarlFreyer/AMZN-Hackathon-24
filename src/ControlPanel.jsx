@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 function ControlPanel(props) {
-  const {floorLevel, minFloor, maxFloor, onChangeFloor, zoom} = props;
+  const {floorLevel, minFloor, maxFloor, onChangeFloor, zoom, edit, onEdit} = props;
 
   const onSelectFloor = evt => {
     const floor = evt.target.value;
@@ -24,6 +24,18 @@ function ControlPanel(props) {
               <p>{floor}</p>
             </label>)
           })}
+        </fieldset>
+        <fieldset className='radios'>
+          <label className='radioLabel'>
+              <input
+                type="checkbox"
+                value="edit"
+                checked={edit.active}
+                onChange={(event) => onEdit({active: event.target.checked, show: false, lng: 0, lat:0, type: 1, data: {}})}
+                className='radioButton'
+              />
+              <p>Add</p>
+            </label>
         </fieldset>
       </div>
     );
