@@ -6,11 +6,28 @@ body {
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
 }
-#map {
+.map {
   position: relative;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
+
+.bottomPopups{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.bottomPopups div{
+  background-color: antiquewhite;
+  border: 10px;
+}
+
 .control-panel {
   position: absolute;
   top: 0;
@@ -63,16 +80,4 @@ fieldset{
   margin: 0px;
   padding: 0px;
   border: 0px;
-}
-
-.tooltip {
-  position: absolute;
-  margin: 8px;
-  padding: 4px;
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  max-width: 300px;
-  font-size: 10px;
-  z-index: 9;
-  pointer-events: none;
 }
