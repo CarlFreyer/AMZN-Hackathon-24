@@ -34,4 +34,4 @@ function Home({ user, signOut }) {
   );
 }
 
-export default withAuthenticator(Home);
+export default (Home);
