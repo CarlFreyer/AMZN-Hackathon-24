@@ -3,20 +3,14 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import BuildingList from './BuildingList';
 import BuildingSelector from './BuildingSelector';
-
+import Map from './Map';
+//<BuildingList />
+//<BuildingSelector />
 const Radar = () => {
   return (
     <div className="heat-map">
-      <Header />
       <div className="content-wrapper">
-        <Sidebar />
-        <main className="main-content">
-          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0c51151e0886c0153d8ba5b3a79c9cca30d9ee3c766204b400e44a365666d968?placeholderIfAbsent=true&apiKey=f10bf8204ac344558f21f79909bd7a81" alt="" className="decorative-image" />
-          <div className="building-section">
-            <BuildingList />
-            <BuildingSelector />
-          </div>
-        </main>
+        <Map />
       </div>
       <style jsx>{`
         .heat-map {
@@ -29,6 +23,7 @@ const Radar = () => {
         .content-wrapper {
           display: flex;
           gap: 20px;
+          overflow: hidden;
         }
         .main-content {
           display: flex;

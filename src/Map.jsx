@@ -5,6 +5,7 @@ import {dataLayer, lineLayer} from './mapStyle';
 import mapShapes from "./mapShapes.json";
 import studiersConfig from "./studiersConfig.json";
 import ControlPanel from "./ControlPanel";
+import Sidebar from "./Sidebar";
 
 function filterByFloor(shapes, zoom, floor, studiers) {
   const features = shapes.features.filter(feature => {
@@ -80,6 +81,7 @@ export default function Map() {
               </Source>
             )}
         </MapView>
+        <Sidebar />
         <ControlPanel
               floorLevel={floor}
               minFloor={3}

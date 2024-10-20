@@ -10,6 +10,7 @@ import {
 import Map from "./Map.jsx";
 import Chat from "./Chat.jsx";
 import Radar from "./Radar.jsx";
+import Header from "./Header.jsx";
 
 /**
  * @type {import('aws-amplify/data').Client<import('../amplify/data/resource').Schema>}
@@ -23,6 +24,7 @@ const client = generateClient({
 export default function App() {
   return (
     <Router>
+      <Header />
         <Routes>
             <Route exact path="/" element={<Radar />} />
             <Route exact path="/Map" element={<Map />} />

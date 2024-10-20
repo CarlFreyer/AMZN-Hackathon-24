@@ -19,6 +19,9 @@ const Sidebar = () => {
       <div className="sidebar-footer"></div>
       <style jsx>{`
         .sidebar {
+          position: absolute;
+          bottom: 0;
+          left: 0;
           background-color: rgba(161, 211, 68, 0.7);
           display: flex;
           width: 25%;
@@ -38,7 +41,7 @@ const Sidebar = () => {
           cursor: pointer;
         }
         .sidebar-footer {
-          background-color: rgba(161, 211, 68, 0.45);
+          background-color: rgba(113, 75, 62, 0);
           margin-top: 167px;
           height: 383px;
         }

@@ -20,6 +20,7 @@ const Header = () => {
           gap: 28px;
           flex-wrap: wrap;
           padding: 6px 34px;
+          height: 70px;
         }
         .logo {
           color: #714b3e;

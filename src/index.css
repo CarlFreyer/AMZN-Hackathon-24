@@ -9,8 +9,13 @@ body {
 .map {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 70px);
   overflow: hidden;
+}
+
+.mapboxgl-map{
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .bottomPopups{
