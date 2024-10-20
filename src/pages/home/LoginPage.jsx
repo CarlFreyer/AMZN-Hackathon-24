@@ -7,7 +7,6 @@ import ProfileImage from './ProfileImage';
 function LoginPage() {
   return (
     <div className="login-page">
-      <Header />
       <main className="login-content">
         <div className="login-column">
           <h1 className="welcome-text">WELCOME BACK!</h1>

@@ -39,7 +39,7 @@ function LoginForm() {
         </label>
         <a href="#forgot-password" className="forgot-password">Forget password?</a>
       </div>
-      <button onClick={() => navigate("/heatmap")} type="submit" className="sign-in-button">Sign In  </button>      
+      <button onClick={() => navigate("/Map")} type="submit" className="sign-in-button">Sign In  </button>      
     <style jsx>{`
         .login-form {
           display: flex;
