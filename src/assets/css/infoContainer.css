@@ -1,0 +1,8 @@
+.introLogo {
+    background-color: #714B3E;
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    color:white;
+    display: inline-block; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }

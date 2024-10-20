@@ -71,11 +71,6 @@ export default function Sidebar({ setChat }) {
             )}
           </div>
         </div>
-        <div className="bottom">
-          <button className="logout-btn">
-            <i className="fa-solid fa-power-off"></i>Logout
-          </button>
-        </div>
       </div>
     </div>
   );
