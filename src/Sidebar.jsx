@@ -29,7 +29,11 @@ const Sidebar = (props) => {
         </select>
       </div>
       <button className="filter-button">Filter</button>
-      <div className="sidebar-footer"></div>
+      <div className="sidebar-footer">
+        <p>1. Zoom in to select floors</p>
+        <p>2. See the percent of studiers in each room</p>
+        <p>3. Add where you are studying by clicking on "ADD" and then selecting your location and class.</p>
+      </div>
       <style jsx>{`
         .sidebar {
           position: absolute;
