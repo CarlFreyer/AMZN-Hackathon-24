@@ -20,7 +20,7 @@ const Sidebar = () => {
       <style jsx>{`
         .sidebar {
           position: absolute;
-          bottom: 0;
+          top: 0;
           left: 0;
           background-color: rgba(161, 211, 68, 0.7);
           display: flex;
