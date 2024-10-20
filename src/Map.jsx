@@ -25,7 +25,6 @@ function filterByFloor(shapes, zoom, floor, studiers) {
     }
     feature.properties.courses = studiers[feature.properties.type][feature.properties.name]['courses'].toString()
   });
-  console.log(features)
   return {type: 'FeatureCollection', features};
 }
 
@@ -60,7 +59,6 @@ export default function Map() {
           interactiveLayerIds={['data', 'lines']}
           onMove={event => {setZoom(event.viewState.zoom)}}
           onClick={(event) => {
-            console.log(event)
             if(event.features.length == 0){
               setPopup({show: false, lng: 0, lat:0, data: ("<></>")})
             }else{
