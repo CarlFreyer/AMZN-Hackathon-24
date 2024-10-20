@@ -54,7 +54,7 @@ export default function Content({ chat, setChat }) {
                 {messages.map((msg) => (
                   <Message
                     key={msg?.id}
-                    pfp={msg?.pfp} // Pass profile picture to Message
+                    pfp={msg?.pfp} // pfp
                     msg={msg}
                     owner={msg?.owner}
                     openImageViewer={openImageViewer}

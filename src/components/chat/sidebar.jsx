@@ -4,20 +4,29 @@ import Avatar from "./avatar";
 import ChatItem from "./chatItem";
 import ContactItem from "./contactItem";
 import Profile from "./profile";
-import {chats} from "../../data/chatItems";
+import { chats } from "../../data/chatItems";
 
 export default function Sidebar({ setChat }) {
   const [newChat, setNewChat] = useState(false);
   const [chatGroup, setChatGroup] = useState(chats);
   const [onProfile, setOnProfile] = useState(false);
   const [activeChatId, setActiveChatId] = useState(null); 
-  
+
   const handleSetActiveChat = (id) => {
-    console.log("Active chat ID:", id); // Debugging log
-    setActiveChatId(id); // Set the clicked chat as active
+    setActiveChatId(id); 
   };
 
-  console.log(onProfile);
+  const togglePinChat = (id) => {
+    setChatGroup((prevChats) =>
+      prevChats.map((chat) =>
+        chat.id === id ? { ...chat, pinned: !chat.pinned } : chat
+      )
+    );
+  };
+
+  // Sort chats to show pinned ones at the top
+  const sortedChatGroup = [...chatGroup].sort((a, b) => b.pinned - a.pinned);
+
   return (
     <div className="sidebar">
       <Profile open={onProfile} setOpen={setOnProfile} />
@@ -54,8 +63,8 @@ export default function Sidebar({ setChat }) {
                 ))}
               </div>
             ) : (
-                <div className="items-wrapper">
-                {chatGroup.map((chat) => (
+              <div className="items-wrapper">
+                {sortedChatGroup.map((chat) => (
                   <ChatItem
                     key={chat.id}
                     setChat={setChat}
@@ -65,6 +74,8 @@ export default function Sidebar({ setChat }) {
                     lastMessage={chat.lastMessage}
                     timeline={chat.timeline}
                     avatar={chat.avatar}
+                    pinned={chat.pinned} // Pass pinned status
+                    togglePin={() => togglePinChat(chat.id)} // Toggle pin on click
                   />
                 ))}
               </div>

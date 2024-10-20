@@ -1,10 +1,13 @@
 
 import "../../assets/css/message.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar as faStarFilled, faStar as faStarOutline } from '@fortawesome/free-solid-svg-icons';
 
-export default function Message({ owner, msg, openImageViewer }) {
+
+export default function Message({ owner, msg, openImageViewer, togglePin,pinned }) {
   return (
     <div className={owner ? "message owner" : "message"}>
-      <img src={msg?.pfp} alt="Profile" className="profile-pic" /> {/* Display Profile Picture */}
+      <img src={msg?.pfp} alt="Profile" className="profile-pic" /> 
       <div className="message-wrapper">
         {msg?.images.length > 0 && (
           <div
