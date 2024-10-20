@@ -5,10 +5,21 @@ import ChatItem from "./chatItem";
 import ContactItem from "./contactItem";
 import Profile from "./profile";
 import { chats } from "../../data/chatItems";
+import clutchbot from '../../assets/image/clutchbot.png';
 
 export default function Sidebar({ setChat }) {
   const [newChat, setNewChat] = useState(false);
-  const [chatGroup, setChatGroup] = useState(chats);
+  const [chatGroup, setChatGroup] = useState([
+    { 
+      id: "ai-clutchbot", 
+      username: "AI Clutchbot", 
+      lastMessage: "How can I assist you today?", 
+      timeline: "now", 
+      avatar: clutchbot, 
+      pinned: true 
+    },
+    ...chats
+  ]);
   const [onProfile, setOnProfile] = useState(false);
   const [activeChatId, setActiveChatId] = useState(null); 
 
@@ -19,13 +30,18 @@ export default function Sidebar({ setChat }) {
   const togglePinChat = (id) => {
     setChatGroup((prevChats) =>
       prevChats.map((chat) =>
-        chat.id === id ? { ...chat, pinned: !chat.pinned } : chat
+        chat.id === id && chat.id !== "ai-clutchbot" 
+          ? { ...chat, pinned: !chat.pinned } 
+          : chat
       )
     );
   };
 
-  // Sort chats to show pinned ones at the top
-  const sortedChatGroup = [...chatGroup].sort((a, b) => b.pinned - a.pinned);
+  const sortedChatGroup = [...chatGroup].sort((a, b) => {
+    if (a.id === "ai-clutchbot") return -1; // keep AI Clutchbot at the top
+    if (b.id === "ai-clutchbot") return 1;
+    return b.pinned - a.pinned;
+  });
 
   return (
     <div className="sidebar">
