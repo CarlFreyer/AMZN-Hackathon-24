@@ -17,12 +17,13 @@ function filterByFloor(shapes, zoom, floor, studiers) {
   })
   features.forEach(feature => {
     if(zoom <= 17){
-      feature.properties.studiers = studiers[feature.properties.type][feature.properties.name]
+      feature.properties.studiers = studiers[feature.properties.type][feature.properties.name]['cout']
     }else if(zoom > 17 && feature.properties.type == "Building"){
       feature.properties.studiers = -1
     }else{
-      feature.properties.studiers = studiers[feature.properties.type][feature.properties.name]
+      feature.properties.studiers = studiers[feature.properties.type][feature.properties.name]['cout']
     }
+    feature.properties.courses = studiers[feature.properties.type][feature.properties.name]['courses'].toString()
   });
   console.log(features)
   return {type: 'FeatureCollection', features};
@@ -64,12 +65,14 @@ export default function Map() {
               setPopup({show: false, lng: 0, lat:0, data: ("<></>")})
             }else{
               const coordinates = event.features[0].geometry.coordinates.slice();
-              const name = event.features[0].properties.name;
+              const name = event.features[0].properties.type == "Room" ? event.features[0].properties.name  + " " + event.features[0].properties.building : event.features[0].properties.name;
+              const courses = event.features[0].properties.courses;
+              const count = event.features[0].properties.studiers;
 
               while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
                 coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360;
               }
-              setPopup({show: true, lng: event.lngLat.lng, lat: event.lngLat.lat, data: name })
+              setPopup({show: true, lng: event.lngLat.lng, lat: event.lngLat.lat, data: {courses: courses, studiers: count, name: name} })
             }
             
           }}
@@ -91,12 +94,17 @@ export default function Map() {
             />
         {popUp.show && (
           <div className="bottomPopups">
-            <div>
-              {popUp.data}
+            <div class="box">
+              <div><h1 class="label">Room/Building Name</h1><h1 class="value">{popUp.data.name}</h1></div>
+              <div><h3 class="label">Percent of Studiers (Compared to rest of campus)</h3><h3 class="value">{popUp.data.studiers * 10}%</h3></div>
             </div>
-            <div>
-
-            </div>
+            {popUp.data.courses.length != 0 && (
+            <div class="box">
+              <h2 class="label">Courses being studied</h2>
+              <div class="courseList">
+                {popUp.data.courses.split(',').map(course => (<h3>{course}</h3>))}
+              </div>
+            </div>)}
           </div>)}
       </div>
     </div>

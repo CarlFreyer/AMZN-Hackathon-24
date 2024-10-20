@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Map from "./Map.jsx";
 import Messenger from "./pages/chat/messenger.jsx"
+import Home from "./pages/home/homePage.jsx"
 import Radar from "./Radar.jsx";
 import Header from "./Header.jsx";
 
@@ -23,7 +24,7 @@ export default function App() {
     <Router>
       <Header />
         <Routes>
-            <Route exact path="/" element={<Radar />} />
+            <Route exact path="/" element={<Home />} />
             <Route exact path="/Map" element={<Map />} />
             <Route exact path="/Chat" element={<Messenger />} />
             <Route exact path="/Radar" element={<Radar />} />
