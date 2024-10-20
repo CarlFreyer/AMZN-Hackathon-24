@@ -7,7 +7,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Navbar from "./Navbar.jsx";
+import Navbar from "./NavBar.jsx";
 import Map from "./Map.jsx";
 import Chat from "./Chat.jsx";
 
