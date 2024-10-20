@@ -1,3 +1,78 @@
 body{
   margin: 0px;
 }
+
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+}
+#map {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+.control-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  margin: 20px;
+  font-size: 13px;
+  line-height: 2;
+  color: #6b6b76;
+  text-transform: uppercase;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.radioLabel{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.radioLabel p{
+  font-size: large;
+  margin: 0px;
+  justify-self: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.radioLabel:hover p{
+  background-color: rgb(192, 252, 71);
+}
+
+.radioButton{
+  display: none;
+}
+
+.radioLabel :checked + p{
+  background-color: yellowgreen;
+}
+
+fieldset{
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+
+.tooltip {
+  position: absolute;
+  margin: 8px;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  max-width: 300px;
+  font-size: 10px;
+  z-index: 9;
+  pointer-events: none;
+}
