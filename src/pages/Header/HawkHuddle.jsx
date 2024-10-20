@@ -21,13 +21,9 @@ const HawkHuddle = () => {
           flex-direction: row;
           background-color: #fff;
           align-items: center;
-          /* Add rounded corners */
           border-radius: 15px;
-          /* Optional: Add a box shadow for better aesthetics */
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          /* Optional: Add padding or margin as needed */
-          padding: 20px;
-          margin: 20px;
+          padding: 10px;
         }
         .main-content {
           display: flex;
@@ -50,7 +46,6 @@ const HawkHuddle = () => {
             max-width: 100%;
           }
           .content-wrapper {
-            padding: 0 20px;
             border-radius: 10px;
           }
         }

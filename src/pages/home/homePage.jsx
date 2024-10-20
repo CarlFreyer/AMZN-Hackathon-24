@@ -12,7 +12,7 @@ function Home({ user, signOut }) {
        <div className="flex justify-center items-center h-screen w-full">
         <LoginPage />
       </div>
-      <div className="flex justify-end px-4 py-2">
+      {/* <div className="flex justify-end px-4 py-2">
         <button
           type="button"
           className="signOutButton"
@@ -20,10 +20,7 @@ function Home({ user, signOut }) {
         >
           Sign Out
         </button>
-      </div>
-      <div className="flex justify-center items-center h-screen w-full">
-        <h1>Welcome to the Home Page</h1>
-      </div>
+      </div> */}
       {/* <div className="flex justify-center">
         <button
           type="button"

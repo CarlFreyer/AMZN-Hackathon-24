@@ -43,7 +43,6 @@ const Navigation = () => {
         }
         .menu-item {
           border-radius: 10px;
-          padding: 2px 12px;
           cursor: pointer;
           font: 500 25px/0.8 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
           color: #535a65;

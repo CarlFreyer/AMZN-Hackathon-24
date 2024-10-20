@@ -39,7 +39,7 @@ function LoginForm() {
         </label>
         <a href="#forgot-password" className="forgot-password">Forget password?</a>
       </div>
-      <form onSubmit={handleSignIn}><button type="submit" className="sign-in-button">Sign In</button> </form>      
+      <button onClick={() => navigate("/heatmap")} type="submit" className="sign-in-button">Sign In  </button>      
     <style jsx>{`
         .login-form {
           display: flex;
@@ -126,7 +126,7 @@ function LoginForm() {
           box-shadow: 4px 8px 12px rgba(78, 99, 141, 0.06);
           color: #fff;
           letter-spacing: 2.8px;
-          padding: 23px 32px;
+          padding: 15px 15px;
           font: 800 28px Montserrat, sans-serif;
           border: 2px solid #714b3e;
           cursor: pointer;
@@ -145,12 +145,12 @@ function LoginForm() {
         }
         @media (max-width: 991px) {
           .input-field, .sign-in-button {
-            padding: 20px;
+            padding: 10px;
           }
           .form-options {
             flex-direction: column;
             align-items: flex-start;
-            gap: 20px;
+            gap: 10px;
           }
         }
       `}</style>

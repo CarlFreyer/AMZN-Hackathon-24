@@ -7,12 +7,12 @@ import Header from "../Header/HawkHuddle";
 export default function Messenger() {
   const [chat, setChat] = useState(false);
   return (
-    <div>
+    <div className="chat-container">
       <Header />
-    <div className="messenger">
-      <Sidebar setChat={setChat} />
-      <Content chat={chat} setChat={setChat} />
-    </div>
+      <div className="messenger">
+        <Sidebar setChat={setChat} />
+        <Content chat={chat} setChat={setChat} />
+      </div>
     </div>
   );
 }
