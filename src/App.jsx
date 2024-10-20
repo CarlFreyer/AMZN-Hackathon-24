@@ -8,7 +8,7 @@ import {
   Route,
 } from "react-router-dom";
 import Map from "./Map.jsx";
-import Chat from "./Chat.jsx";
+import Messenger from "./pages/chat/messenger.jsx"
 import Radar from "./Radar.jsx";
 import Header from "./Header.jsx";
 
@@ -16,10 +16,7 @@ import Header from "./Header.jsx";
  * @type {import('aws-amplify/data').Client<import('../amplify/data/resource').Schema>}
  */
 
-Amplify.configure(outputs);
-const client = generateClient({
-  authMode: "userPool",
-});
+import HeatMap from './pages/heatmap/heatMap';
 
 export default function App() {
   return (
@@ -28,7 +25,7 @@ export default function App() {
         <Routes>
             <Route exact path="/" element={<Radar />} />
             <Route exact path="/Map" element={<Map />} />
-            <Route exact path="/Chat" element={<Chat />} />
+            <Route exact path="/Chat" element={<Messenger />} />
             <Route exact path="/Radar" element={<Radar />} />
         </Routes>
     </Router>
