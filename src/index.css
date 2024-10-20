@@ -24,8 +24,9 @@ body {
 
 .bottomPopups{
   position: absolute;
-  width: 100%;
+  width: calc(100% - 350px);
   bottom: 0;
+  right: 0;
   height: 300px;
   padding: 20px;
   display: flex;
@@ -39,7 +40,19 @@ body {
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
+  overflow-y: scroll;
 }
+
+.box h1{
+  margin: 0px
+}
+.box div{
+  margin: 5px
+}
+.box h3{
+  margin: 0px
+}
+
 
 .control-panel {
   position: absolute;

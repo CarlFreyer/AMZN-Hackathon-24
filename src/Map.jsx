@@ -39,6 +39,8 @@ export default function Map() {
     return filterByFloor(shapes, zoom, floor, studiers);
   }, [zoom, floor]);
 
+  console.log(Object.keys(studiers.Room))
+
   /*
     <Authenticator>
       {({ signOut }) => (
@@ -82,7 +84,7 @@ export default function Map() {
               </Source>
             )}
         </MapView>
-        <Sidebar />
+        <Sidebar rooms={Object.keys(studiers.Room)} buildings={Object.keys(studiers.Building)} courses={studiers['Courses']} />
         <ControlPanel
               floorLevel={floor}
               minFloor={3}

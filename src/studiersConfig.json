@@ -30,5 +30,6 @@
         "790": {"cout": 0, "courses": ["CSE 303", "CSE 252", "CSE 262"]},
         "795": {"cout": 1, "courses": ["CSE 303", "CSE 262"]},
         "750": {"cout": 2, "courses": ["CSE 303"]}
-    }
+    },
+    "Courses": ["CSE 303", "CSE 252", "CSE 262"]
 }
