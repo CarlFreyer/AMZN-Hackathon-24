@@ -8,6 +8,9 @@ export default function Navbar() {
       <a href='/Chat'>
         <p>Chat</p>
       </a>
+      <a href='/Radar'>
+        <p>Radar</p>
+      </a>
     </div>
   );
 }

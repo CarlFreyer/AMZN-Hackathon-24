@@ -7,9 +7,9 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Navbar from "./NavBar.jsx";
 import Map from "./Map.jsx";
 import Chat from "./Chat.jsx";
+import Radar from "./Radar.jsx";
 
 /**
  * @type {import('aws-amplify/data').Client<import('../amplify/data/resource').Schema>}
@@ -23,10 +23,11 @@ const client = generateClient({
 export default function App() {
   return (
     <Router>
-        <Navbar/>
         <Routes>
+            <Route exact path="/" element={<Radar />} />
             <Route exact path="/Map" element={<Map />} />
             <Route exact path="/Chat" element={<Chat />} />
+            <Route exact path="/Radar" element={<Radar />} />
         </Routes>
     </Router>
   );
