@@ -9,7 +9,7 @@ export const chats = [
     {
       id: 1,
       username: "CSE303",
-      lastMessage: "Say hi! to John Doe",
+      lastMessage: "let me know what you think",
       timeline: "2 days ago",
       avatar: img3,
     },

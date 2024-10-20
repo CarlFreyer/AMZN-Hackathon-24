@@ -11,6 +11,11 @@ export default function Sidebar({ setChat }) {
   const [chatGroup, setChatGroup] = useState(chats);
   const [onProfile, setOnProfile] = useState(false);
   const [activeChatId, setActiveChatId] = useState(null); 
+  
+  const handleSetActiveChat = (id) => {
+    console.log("Active chat ID:", id); // Debugging log
+    setActiveChatId(id); // Set the clicked chat as active
+  };
 
   console.log(onProfile);
   return (
@@ -54,7 +59,8 @@ export default function Sidebar({ setChat }) {
                   <ChatItem
                     key={chat.id}
                     setChat={setChat}
-                    onClick={() => setActiveChatId(chat.id)} 
+                    isActive={activeChatId === chat.id} // Check if this chat is active
+                    onClick={() => handleSetActiveChat(chat.id)} // Set as active on click
                     username={chat.username}
                     lastMessage={chat.lastMessage}
                     timeline={chat.timeline}
