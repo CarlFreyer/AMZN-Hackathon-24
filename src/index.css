@@ -1,35 +1,88 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color: rgba(255, 255, 255, 0.87);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
+body{
+  margin: 0px;
 }
 
-.card {
-  padding: 2em;
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.map {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 70px);
+  overflow: hidden;
 }
 
-.read-the-docs {
-  color: #888;
+.mapboxgl-map{
+  width: 100% !important;
+  height: 100% !important;
 }
 
-.box:nth-child(3n + 1) {
-  grid-column: 1;
+.bottomPopups{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
 }
-.box:nth-child(3n + 2) {
-  grid-column: 2;
+
+.bottomPopups div{
+  background-color: antiquewhite;
+  border: 10px;
 }
-.box:nth-child(3n + 3) {
-  grid-column: 3;
+
+.control-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  margin: 20px;
+  font-size: 13px;
+  line-height: 2;
+  color: #6b6b76;
+  text-transform: uppercase;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.radioLabel{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.radioLabel p{
+  font-size: large;
+  margin: 0px;
+  justify-self: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.radioLabel:hover p{
+  background-color: rgb(192, 252, 71);
+}
+
+.radioButton{
+  display: none;
+}
+
+.radioLabel :checked + p{
+  background-color: yellowgreen;
+}
+
+fieldset{
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
 }
