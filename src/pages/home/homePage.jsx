@@ -10,6 +10,7 @@
 import React from "react";
 import "@aws-amplify/ui-react/styles.css";
 import { withAuthenticator } from "@aws-amplify/ui-react";
+import LoginPage from "./LoginPage";
 //...
 
 function Home({ user, signOut }) {
@@ -25,7 +26,7 @@ function Home({ user, signOut }) {
         </button>
       </div>
       <div className="flex justify-center items-center h-screen w-full">
-        Hello World
+        <LoginPage />
       </div>
     </div>
   );
