@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Navigation = () => {
-  const menuItems = [{name:'Home', location: '/'}, {name:'Radar', location: 'radar'}, {name:'Nest Chat', location: 'chat'}];
+  const menuItems = [{name:'Home', location: '/'}, {name:'Radar', location: '/radar'}, {name:'Nest Chat', location: '/chat'}];
 
   return (
     <nav className="navigation">
