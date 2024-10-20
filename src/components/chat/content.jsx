@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../../assets/css/content.css";
-import Avatar from "./avatar";
+// import Avatar from "./avatar";
 import Message from "./message";
 import { SeedMessages } from "../../data/messages";
 import ImageSlider from "./imageSlider";
@@ -27,7 +27,7 @@ export default function Content({ chat, setChat }) {
       {chat ? (
         <div className="wrapper">
           <div className="top">
-            <Avatar username={"Marc"} height={45} width={45} />
+            {/* <Avatar username={"Marc"} height={45} width={45} /> */}
             <div
               className="app-icon menu-icon"
               onClick={() => setOnMenu((prev) => !prev)}

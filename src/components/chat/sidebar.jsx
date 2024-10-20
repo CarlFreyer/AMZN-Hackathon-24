@@ -24,7 +24,7 @@ export default function Sidebar({ setChat }) {
       <div className="wrapper">
         <div className="top">
           <div style={{cursor: "pointer"}} onClick={() => setOnProfile(true)}>
-            <Avatar src="" height={45} width={45} />
+            {/* <Avatar src="" height={45} width={45} /> */}
           </div>
           {newChat && <span className="heading">Add Conversation</span>}
           <div

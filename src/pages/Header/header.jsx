@@ -8,6 +8,8 @@ const Header = () => {
         .header {
           display: flex;
           align-items: center;
+          background-color: #fff;
+          flex-direction: row;
         }
         .logo {
           color: #714b3e;

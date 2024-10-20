@@ -2,10 +2,10 @@ import React from "react";
 import "@aws-amplify/ui-react/styles.css";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import LoginPage from "./LoginPage";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function Home({ user, signOut }) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <div  style={{ color: 'black'}}>
@@ -24,7 +24,7 @@ function Home({ user, signOut }) {
       <div className="flex justify-center items-center h-screen w-full">
         <h1>Welcome to the Home Page</h1>
       </div>
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <button
           type="button"
           className="relative inline-flex items-center gap-x-1.5 rounded-md bg-green-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
@@ -32,7 +32,7 @@ function Home({ user, signOut }) {
         >
           Go to Chatroom
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

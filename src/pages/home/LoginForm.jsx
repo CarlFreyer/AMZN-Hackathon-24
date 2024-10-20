@@ -61,7 +61,6 @@ function LoginForm() {
           width: 100%;
           border-radius: 80px;
           border: 2px solid #714b3e;
-          background-color: #fff;
           padding: 24px 32px;
           font-size: 24px;
           letter-spacing: 2.4px;
@@ -96,7 +95,6 @@ function LoginForm() {
           height: 48px;
           border-radius: 50%;
           border: 2px solid #a1d344;
-          background-color: #fff;
           display: inline-block;
           margin-right: 16px;
           position: relative;

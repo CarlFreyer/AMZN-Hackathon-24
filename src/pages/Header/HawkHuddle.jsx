@@ -19,14 +19,22 @@ const HawkHuddle = () => {
         .hawk-huddle-container {
           display: flex;
           flex-direction: row;
+          background-color: #fff;
+          align-items: center;
+          /* Add rounded corners */
+          border-radius: 15px;
+          /* Optional: Add a box shadow for better aesthetics */
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          /* Optional: Add padding or margin as needed */
+          padding: 20px;
+          margin: 20px;
         }
         .main-content {
-          background-color: #fff;
           display: flex;
           width: 100%;
           flex-direction: row;
           overflow: hidden;
-          padding: 0 30px;
+          padding: 0 15px;
         }
         .content-wrapper {
           background-color: #fff;
@@ -34,6 +42,8 @@ const HawkHuddle = () => {
           display: flex;
           gap: 28px;
           padding: 6px 34px;
+          /* Add rounded corners */
+          border-radius: 7px;
         }
         @media (max-width: 991px) {
           .main-content {
@@ -41,6 +51,7 @@ const HawkHuddle = () => {
           }
           .content-wrapper {
             padding: 0 20px;
+            border-radius: 10px;
           }
         }
       `}</style>

@@ -24,7 +24,7 @@ function LoginPage() {
       </main>
       <style jsx>{`
         .login-page {
-          background-color: #fff;
+          wdith
           display: flex;
           flex-direction: column;
           overflow: hidden;
