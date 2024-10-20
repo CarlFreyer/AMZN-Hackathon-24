@@ -12,6 +12,7 @@ export const chats = [
       lastMessage: "let me know what you think",
       timeline: "2 days ago",
       avatar: img3,
+      pinned: false,
     },
     {
       id: 2,
@@ -19,6 +20,7 @@ export const chats = [
       lastMessage: "Has anyone started studying ;-;",
       timeline: "1 hour ago",
       avatar: img2,
+      pinned: false,
     },
     {
       id: 3,
@@ -26,6 +28,7 @@ export const chats = [
       lastMessage: "Can we all study together ...",
       timeline: "5 minutes ago",
       avatar: img4,
+      pinned: false,
     },
     {
       id: 4,
@@ -33,6 +36,7 @@ export const chats = [
       lastMessage: "I'll see you tomorrow!",
       timeline: "3 days ago",
       avatar: img1,
+      pinned: false,
     },
     {
       id: 5,
@@ -40,6 +44,7 @@ export const chats = [
       lastMessage: "Are you guys here yet?",
       timeline: "1 week ago",
       avatar: img6,
+      pinned: false,
     },
     {
       id: 6,
@@ -47,6 +52,7 @@ export const chats = [
       lastMessage: "Don't forget the meeting.",
       timeline: "2 hours ago",
       avatar: img5,
+      pinned: false,
     },
   ];
   
