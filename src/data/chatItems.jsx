@@ -23,7 +23,7 @@ export const chats = [
     {
       id: 3,
       username: "PHY021",
-      lastMessage: "Let's catch up later.",
+      lastMessage: "Can we all study together ...",
       timeline: "5 minutes ago",
       avatar: img4,
     },
@@ -37,7 +37,7 @@ export const chats = [
     {
       id: 5,
       username: "MATH231",
-      lastMessage: "Looking forward to it.",
+      lastMessage: "Are you guys here yet?",
       timeline: "1 week ago",
       avatar: img6,
     },
