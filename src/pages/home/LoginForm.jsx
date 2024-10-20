@@ -1,6 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import HeatMap from '../heatmap/heatMap';
 
 function LoginForm() {
+  const navigate = useNavigate();
+
+  const handleSignIn = () => {
+    // navigate('/heatmap'); 
+    <HeatMap />
+  };
   return (
     <form className="login-form">
       <div className="input-group">
@@ -9,7 +17,7 @@ function LoginForm() {
           type="email"
           id="username"
           className="input-field"
-          placeholder="deniel123@gmail.com"
+          placeholder="johndoe@lehigh.edu"
         />
       </div>
       <div className="input-group">
@@ -31,8 +39,8 @@ function LoginForm() {
         </label>
         <a href="#forgot-password" className="forgot-password">Forget password?</a>
       </div>
-      <button type="submit" className="sign-in-button">Sign In</button>
-      <style jsx>{`
+      <form onSubmit={handleSignIn}><button type="submit" className="sign-in-button">Sign In</button> </form>      
+    <style jsx>{`
         .login-form {
           display: flex;
           flex-direction: column;

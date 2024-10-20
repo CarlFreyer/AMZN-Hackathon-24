@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './header';
 import SearchBar from './SearchBar';
+import Navigation from './Navigation';
+import UserProfile from './UserProfile';
 
 const HawkHuddle = () => {
   return (
@@ -9,27 +11,28 @@ const HawkHuddle = () => {
       <main className="main-content">
         <div className="content-wrapper">
           <SearchBar />
+          <Navigation />
+          <UserProfile />
         </div>
       </main>
       <style jsx>{`
         .hawk-huddle-container {
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
         }
         .main-content {
           background-color: #fff;
           display: flex;
           width: 100%;
-          flex-direction: column;
+          flex-direction: row;
           overflow: hidden;
-          padding: 0 1px;
+          padding: 0 30px;
         }
         .content-wrapper {
           background-color: #fff;
           z-index: 10;
           display: flex;
           gap: 28px;
-          flex-wrap: wrap;
           padding: 6px 34px;
         }
         @media (max-width: 991px) {

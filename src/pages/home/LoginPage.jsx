@@ -28,14 +28,14 @@ function LoginPage() {
           display: flex;
           flex-direction: column;
           overflow: hidden;
-          padding: 58px 33px;
+          padding: 1px 1px;
         }
         .login-content {
           display: flex;
           width: 100%;
           max-width: 1444px;
-          margin-top: 59px;
-          gap: 20px;
+          margin-top: 20px;
+          gap: 35px;
         }
         .login-column {
           display: flex;
@@ -46,15 +46,13 @@ function LoginPage() {
           color: #714b3e;
           letter-spacing: 3.6px;
           font: 800 36px Montserrat, sans-serif;
-          border: 1px solid #714b3e;
           align-self: flex-start;
         }
         .signup-prompt {
           color: #444b59;
           letter-spacing: 2.4px;
-          margin-top: 29px;
+          margin-top: -15px;
           font: 400 24px 'Open Sans', sans-serif;
-          border: 1px solid #714b3e;
         }
         .highlight {
           color: #714b3e;
@@ -80,7 +78,7 @@ function LoginPage() {
             flex-direction: column;
             align-items: stretch;
             gap: 0;
-            margin-top: 40px;
+            margin-top: 10px;
           }
           .login-column, .profile-column {
             width: 100%;
