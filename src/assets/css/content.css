@@ -45,11 +45,6 @@
     cursor: pointer;
   }
   
-  .menu-item:hover {
-    color: #714B3E;
-    background-color: black;
-  }
-  
   .content .wrapper .bottom {
     height: 70px;
     display: flex;

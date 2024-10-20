@@ -1,19 +1,20 @@
 import React from 'react';
 
 const Navigation = () => {
-  const menuItems = ['/', 'Radar', 'Nest Chat'];
+  const menuItems = [{name:'Home', location: '/'}, {name:'Radar', location: 'radar'}, {name:'Nest Chat', location: 'chat'}];
 
   return (
     <nav className="navigation">
       <ul className="menu-list">
         {menuItems.map((item, index) => (
-          <li key={index} className={`menu-item ${index === 1 ? 'active' : ''}`}>
-            <a href={`${item}`}>{item}</a>
+          <li key={index} className={`menu-item`}>
+            <a href={`${item.location}`}>{item.name}</a>
           </li>
         ))}
       </ul>
       <style jsx>{`
         .navigation {
+        z-index: 100;
         }
         .menu-list {
           display: flex;
@@ -30,12 +31,12 @@ const Navigation = () => {
           border-radius: 10px;
           padding: 2px 12px;
         }
+        .menu-item:hover{
+          font-weight: bolder;
+        }
         .menu-item a {
           text-decoration: none;
           color: inherit;
-        }
-        .menu-item.active {
-          font-weight: 700;
         }
         @media (max-width: 991px) {
           .menu-list {
